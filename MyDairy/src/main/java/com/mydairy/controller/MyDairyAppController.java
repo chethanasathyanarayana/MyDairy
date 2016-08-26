@@ -18,19 +18,18 @@ public class MyDairyAppController {
 	@Autowired
     UserService userService;
 	 @RequestMapping(value = "/user/", method = RequestMethod.POST)
-	    public ResponseEntity<Void> createUser(@RequestBody User user) {
+	    public boolean createUser(@RequestBody User user) {
 	        System.out.println("Creating User " + user.getUserName());
 	 
 	        if (userService.isUserExist(user)) {
 	            System.out.println("A User with name " + user.getUserName() + " already exist");
-	            return new ResponseEntity<Void>(HttpStatus.CONFLICT);
+	           return false;
 	        }
 	 
-	        userService.saveUser(user);
-	 
-	        HttpHeaders headers = new HttpHeaders();
+	        return userService.saveUser(user);
 	        
-	        return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
+	        
+	        
 	    }
 	 
 }
