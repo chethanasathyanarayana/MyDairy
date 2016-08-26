@@ -1,0 +1,24 @@
+CREATE TABLE `alarmstatus` (
+  `UserId` varchar(20) NOT NULL,
+  `EventId` int(11) NOT NULL,
+  `Status` tinyint(1) NOT NULL,
+  PRIMARY KEY (`UserId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+
+CREATE TABLE `dairydetails` (
+  `UserId` varchar(20) NOT NULL,
+  `EventTime` datetime NOT NULL,
+  `EventName` varchar(100) NOT NULL,
+  `Alarm` tinyint(1) NOT NULL,
+  `EventId` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`UserId`,`EventTime`),
+  KEY `EventId` (`EventId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+
+CREATE TABLE `userdetails` (
+  `UserId` varchar(20) NOT NULL,
+  `UserName` varchar(100) NOT NULL,
+  `Password` varchar(20) NOT NULL,
+  `IsActive` tinyint(1) NOT NULL,
+  PRIMARY KEY (`UserId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
